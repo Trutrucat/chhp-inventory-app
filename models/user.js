@@ -1,12 +1,10 @@
 const mongoose = require('mongoose')
 
-
 const inventorySchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: String,
   quantity: Number
 })
-
 
 const userSchema = mongoose.Schema({
   username: {
@@ -22,9 +20,9 @@ const userSchema = mongoose.Schema({
   updatedAt: Date
 })
 
-
 const User = mongoose.model("User", userSchema)
 
+const Inventory = mongoose.model('Inventory', inventorySchema)
 
 userSchema.set('toJSON', {
   transform: (document, returnedObject) => {
@@ -32,5 +30,4 @@ userSchema.set('toJSON', {
   }
 })
 
-
-module.exports = User
+module.exports = { User, Inventory }

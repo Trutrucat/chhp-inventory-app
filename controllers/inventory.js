@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Inventory = require('../models/inventory');
-
+const { Inventory } = require('../models/user');
 // GET /inventory
 router.get('/', async (req, res) => {
   try {
