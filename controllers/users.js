@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const User = require('../models/user');
+const { User } = require('../models/user');
 const SALT_LENGTH = 12;
 const jwt = require('jsonwebtoken');
 
@@ -24,8 +24,9 @@ router.post('/signup', async (req, res) => {
       );
       res.status(201).json({ user, token });
     } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
+        console.error(error);
+        res.status(400).json({ err: error.message });
+      }
   });
 // controllers/users.js
 
