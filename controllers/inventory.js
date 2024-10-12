@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Inventory } = require('../models/user');
-// GET /inventory
+
 router.get('/', async (req, res) => {
   try {
     const inventory = await Inventory.find();
@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST /inventory
+
 router.post('/', async (req, res) => {
   try {
     const inventory = new Inventory(req.body);
@@ -22,7 +22,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET /inventory/:id
 router.get('/:id', async (req, res) => {
   try {
     const inventory = await Inventory.findById(req.params.id);
@@ -35,7 +34,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// PUT /inventory/:id
+
 router.put('/:id', async (req, res) => {
   try {
     const inventory = await Inventory.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -48,7 +47,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE /inventory/:id
+
 router.delete('/:id', async (req, res) => {
   try {
     const inventory = await Inventory.findByIdAndDelete(req.params.id);
