@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const testJWTRouter = require('./controllers/test-jwt');
 const usersRouter = require('./controllers/users');
 const profilesRouter = require('./controllers/profiles');
-const inventoryRouter = require('./controllers/inventory');
+const inventoryRouter = require('./controllers/inventoryroutes');
 const cors = require('cors');
 mongoose.connect(process.env.MONGODB_URI);
 
