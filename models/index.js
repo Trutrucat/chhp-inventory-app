@@ -1,4 +1,3 @@
-// models/index.js
 const user = require('./user');
 const inventory = require('./inventory');
 const walkinrefrigerator = require('./walkinrefrigerator');
