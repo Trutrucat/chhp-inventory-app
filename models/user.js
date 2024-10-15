@@ -11,15 +11,14 @@ const userSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now, // Automatically set the creation date
+    default: Date.now, 
   },
   updatedAt: {
     type: Date,
-    default: Date.now, // Automatically set the update date
+    default: Date.now,
   },
 });
 
-// Middleware to update the updatedAt field before saving
 userSchema.pre('save', function (next) {
   this.updatedAt = Date.now();
   next();

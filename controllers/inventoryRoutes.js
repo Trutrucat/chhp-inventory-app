@@ -94,7 +94,7 @@ router.put('/:id', async (req, res) => {
 });
 router.delete('/:id', async (req, res) => {
   try {
-    const { type } = req.query;  // Expecting 'type' from query parameter
+    const { type } = req.query; 
     let inventory;
     switch (type) {
       case 'WalkinRefrigerator':
