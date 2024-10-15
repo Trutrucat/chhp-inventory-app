@@ -92,6 +92,42 @@ router.put('/:id', async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
+router.delete('/:id', async (req, res) => {
+  try {
+    const { type } = req.query;  // Expecting 'type' from query parameter
+    let inventory;
+    switch (type) {
+      case 'WalkinRefrigerator':
+        inventory = await WalkinRefrigerator.findByIdAndRemove(req.params.id);
+        break;
+      case 'WalkinFreezer':
+        inventory = await WalkinFreezer.findByIdAndRemove(req.params.id);
+        break;
+      case 'Beer':
+        inventory = await Beer.findByIdAndRemove(req.params.id);
+        break;
+      case 'Kitchen':
+        inventory = await Kitchen.findByIdAndRemove(req.params.id);
+        break;
+      case 'StoreRoom':
+        inventory = await StoreRoom.findByIdAndRemove(req.params.id);
+        break;
+      case 'DiningArea':
+        inventory = await DiningArea.findByIdAndRemove(req.params.id);
+        break;
+      default:
+        return res.status(400).json({ error: 'Invalid inventory type' });
+    }
+
+    if (!inventory) {
+      return res.status(404).json({ error: 'Inventory item not found' });
+    }
+    res.json({ message: 'Inventory item deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 
 

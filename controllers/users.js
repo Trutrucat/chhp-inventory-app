@@ -1,9 +1,11 @@
+const User  = require('../models/user');
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../models/user');
 const SALT_LENGTH = 12;
 const jwt = require('jsonwebtoken');
+
+
 
 router.post('/signup', async (req, res) => {
     try {
@@ -26,6 +28,7 @@ router.post('/signup', async (req, res) => {
       }
   });
 
+
 router.post('/signin', async (req, res) => {
     try {
       const user = await User.findOne({ username: req.body.username });
@@ -43,5 +46,6 @@ router.post('/signin', async (req, res) => {
     }
   });
   
+
 
 module.exports = router;
